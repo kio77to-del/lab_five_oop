@@ -5,6 +5,10 @@
 
 using namespace std;
 
+void printSeparator() {
+    cout << "\n------------------------------------------\n" << endl;
+}
+
 void demoSimpleObjects() {
     cout << "\n=== Обычные объекты ===" << endl;
 
@@ -168,6 +172,70 @@ void demoManualTypeCheck() {
     }
 }
 
+void takeByValue(Circle c) {
+    cout << "Функция takeByValue() начала работу" << endl;
+    c.draw();
+    cout << "Функция takeByValue() завершена" << endl;
+}
+
+void takeByReference(const Circle& c) {
+    cout << "Функция takeByReference() начала работу" << endl;
+    c.draw();
+    cout << "Функция takeByReference() завершена" << endl;
+}
+
+void takeByPointer(const Circle* c) {
+    cout << "Функция takeByPointer() начала работу" << endl;
+    if (c != nullptr) {
+        c->draw();
+    }
+    cout << "Функция takeByPointer() завершена" << endl;
+}
+
+Circle createCircle() {
+    cout << "Функция createCircle() начала работу" << endl;
+    Circle temp(15.0);
+    cout << "Функция createCircle() возвращает объект" << endl;
+    return temp;
+}
+
+Shape createShapeObject() {
+    cout << "Функция createShapeObject() начала работу" << endl;
+    Shape temp("LocalShape");
+    cout << "Функция createShapeObject() возвращает объект" << endl;
+    return temp;
+}
+
+void demoFunctionLifecycle() {
+    cout << "\n=== Передача и возврат объектов из функций ===" << endl;
+
+    Circle c1(20.0);
+
+    printSeparator();
+    cout << "Передача по значению:" << endl;
+    takeByValue(c1);
+
+    printSeparator();
+    cout << "Передача по ссылке:" << endl;
+    takeByReference(c1);
+
+    printSeparator();
+    cout << "Передача по указателю:" << endl;
+    takeByPointer(&c1);
+
+    printSeparator();
+    cout << "Возврат Circle из функции:" << endl;
+    Circle c2 = createCircle();
+    cout << "Объект, полученный из createCircle():" << endl;
+    c2.draw();
+
+    printSeparator();
+    cout << "Возврат Shape из функции:" << endl;
+    Shape s1 = createShapeObject();
+    cout << "Объект, полученный из createShapeObject():" << endl;
+    s1.draw();
+}
+
 int main() {
     cout << "Lab 5 started" << endl;
 
@@ -177,6 +245,7 @@ int main() {
     demoVirtualAndNonVirtual();
     demoDynamicCast();
     demoManualTypeCheck();
+    demoFunctionLifecycle();
 
     cout << "\nProgram finished" << endl;
     return 0;
