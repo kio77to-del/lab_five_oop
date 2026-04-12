@@ -100,6 +100,74 @@ void demoVirtualAndNonVirtual() {
     delete p3;
 }
 
+void demoDynamicCast() {
+    cout << "\n=== dynamic_cast ===" << endl;
+
+    Shape* p1 = new Circle(12.0);
+    Shape* p2 = new Rectangle(5.0, 8.0);
+    Shape* p3 = new Shape();
+
+    Circle* c1 = dynamic_cast<Circle*>(p1);
+    Circle* c2 = dynamic_cast<Circle*>(p2);
+    Circle* c3 = dynamic_cast<Circle*>(p3);
+
+    if (c1 != nullptr) {
+        cout << "p1 успешно приведен к Circle*" << endl;
+        c1->onlyCircleMethod();
+    } else {
+        cout << "p1 не является Circle" << endl;
+    }
+
+    if (c2 != nullptr) {
+        cout << "p2 успешно приведен к Circle*" << endl;
+        c2->onlyCircleMethod();
+    } else {
+        cout << "p2 не является Circle" << endl;
+    }
+
+    if (c3 != nullptr) {
+        cout << "p3 успешно приведен к Circle*" << endl;
+        c3->onlyCircleMethod();
+    } else {
+        cout << "p3 не является Circle" << endl;
+    }
+
+    delete p1;
+    delete p2;
+    delete p3;
+}
+
+void demoManualTypeCheck() {
+    cout << "\n=== Ручная проверка типа ===" << endl;
+
+    Shape* arr[3];
+    arr[0] = new Circle(3.0);
+    arr[1] = new Rectangle(6.0, 2.0);
+    arr[2] = new Shape();
+
+    for (int i = 0; i < 3; i++) {
+        cout << "Объект " << i + 1 << ": " << arr[i]->className() << endl;
+
+        if (arr[i]->className() == "Circle") {
+            Circle* c = static_cast<Circle*>(arr[i]);
+            cout << "Ручная проверка: это Circle" << endl;
+            c->onlyCircleMethod();
+        } else if (arr[i]->className() == "Rectangle") {
+            Rectangle* r = static_cast<Rectangle*>(arr[i]);
+            cout << "Ручная проверка: это Rectangle" << endl;
+            r->onlyRectangleMethod();
+        } else {
+            cout << "Ручная проверка: это базовый Shape" << endl;
+        }
+
+        cout << endl;
+    }
+
+    for (int i = 0; i < 3; i++) {
+        delete arr[i];
+    }
+}
+
 int main() {
     cout << "Lab 5 started" << endl;
 
@@ -107,6 +175,8 @@ int main() {
     demoBasePointers();
     demoCopyConstructors();
     demoVirtualAndNonVirtual();
+    demoDynamicCast();
+    demoManualTypeCheck();
 
     cout << "\nProgram finished" << endl;
     return 0;

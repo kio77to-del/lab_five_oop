@@ -23,6 +23,7 @@ public:
     void testCalls() const;
 
     virtual void draw() const;
+    virtual string className() const;
 };
 
 #endif

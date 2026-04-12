@@ -35,6 +35,10 @@ void Rectangle::virtualAction() const {
     cout << "Rectangle::virtualAction()" << endl;
 }
 
+string Rectangle::className() const {
+    return "Rectangle";
+}
+
 void Rectangle::onlyRectangleMethod() const {
     cout << "Rectangle specific method, width = " << width
          << ", height = " << height << endl;

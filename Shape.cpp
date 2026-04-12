@@ -43,3 +43,7 @@ void Shape::testCalls() const {
 void Shape::draw() const {
     cout << "Shape::draw()" << endl;
 }
+
+string Shape::className() const {
+    return "Shape";
+}

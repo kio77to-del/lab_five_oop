@@ -28,6 +28,10 @@ void Circle::virtualAction() const {
     cout << "Circle::virtualAction()" << endl;
 }
 
+string Circle::className() const {
+    return "Circle";
+}
+
 void Circle::onlyCircleMethod() const {
     cout << "Circle specific method, radius = " << radius << endl;
 }
