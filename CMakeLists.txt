@@ -7,4 +7,6 @@ add_executable(lab_five_oop main.cpp
         Shape.cpp
         Shape.h
         Circle.cpp
-        Circle.h)
+        Circle.h
+        Rectangle.cpp
+        Rectangle.h)

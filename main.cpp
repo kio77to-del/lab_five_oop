@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Shape.h"
 #include "Circle.h"
+#include "Rectangle.h"
 
 using namespace std;
 
@@ -17,6 +18,12 @@ int main() {
     c1.info();
     c1.draw();
     c1.onlyCircleMethod();
+
+    cout << "\n--- Rectangle object ---" << endl;
+    Rectangle r1;
+    r1.info();
+    r1.draw();
+    r1.onlyRectangleMethod();
 
     cout << "\nProgram finished" << endl;
     return 0;
