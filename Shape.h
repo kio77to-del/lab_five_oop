@@ -17,6 +17,11 @@ public:
     virtual ~Shape();
 
     void info() const;
+
+    void simpleAction() const;
+    virtual void virtualAction() const;
+    void testCalls() const;
+
     virtual void draw() const;
 };
 

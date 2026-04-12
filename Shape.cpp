@@ -20,6 +20,26 @@ void Shape::info() const {
     cout << "Object name: " << name << endl;
 }
 
+void Shape::simpleAction() const {
+    cout << "Shape::simpleAction()" << endl;
+}
+
+void Shape::virtualAction() const {
+    cout << "Shape::virtualAction()" << endl;
+}
+
+void Shape::testCalls() const {
+    cout << "Shape::testCalls() start" << endl;
+
+    cout << "Calling simpleAction(): ";
+    simpleAction();
+
+    cout << "Calling virtualAction(): ";
+    virtualAction();
+
+    cout << "Shape::testCalls() end" << endl;
+}
+
 void Shape::draw() const {
     cout << "Shape::draw()" << endl;
 }

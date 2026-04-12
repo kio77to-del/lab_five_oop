@@ -20,6 +20,14 @@ void Circle::draw() const {
     cout << "Circle::draw(), radius = " << radius << endl;
 }
 
+void Circle::simpleAction() const {
+    cout << "Circle::simpleAction()" << endl;
+}
+
+void Circle::virtualAction() const {
+    cout << "Circle::virtualAction()" << endl;
+}
+
 void Circle::onlyCircleMethod() const {
     cout << "Circle specific method, radius = " << radius << endl;
 }

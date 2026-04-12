@@ -71,12 +71,42 @@ void demoCopyConstructors() {
     r2.draw();
 }
 
+void demoVirtualAndNonVirtual() {
+    cout << "\n=== Невиртуальный и виртуальный вызов ===" << endl;
+
+    Shape* p1 = new Shape();
+    Shape* p2 = new Circle(10.0);
+    Shape* p3 = new Rectangle(7.0, 3.0);
+
+    cout << "\nПрямой вызов simpleAction() через Shape*:" << endl;
+    p1->simpleAction();
+    p2->simpleAction();
+    p3->simpleAction();
+
+    cout << "\nПрямой вызов virtualAction() через Shape*:" << endl;
+    p1->virtualAction();
+    p2->virtualAction();
+    p3->virtualAction();
+
+    cout << "\nВызов testCalls() через Shape*:" << endl;
+    p1->testCalls();
+    cout << endl;
+    p2->testCalls();
+    cout << endl;
+    p3->testCalls();
+
+    delete p1;
+    delete p2;
+    delete p3;
+}
+
 int main() {
     cout << "Lab 5 started" << endl;
 
     demoSimpleObjects();
     demoBasePointers();
     demoCopyConstructors();
+    demoVirtualAndNonVirtual();
 
     cout << "\nProgram finished" << endl;
     return 0;

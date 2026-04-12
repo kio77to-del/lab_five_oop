@@ -27,6 +27,14 @@ void Rectangle::draw() const {
          << ", height = " << height << endl;
 }
 
+void Rectangle::simpleAction() const {
+    cout << "Rectangle::simpleAction()" << endl;
+}
+
+void Rectangle::virtualAction() const {
+    cout << "Rectangle::virtualAction()" << endl;
+}
+
 void Rectangle::onlyRectangleMethod() const {
     cout << "Rectangle specific method, width = " << width
          << ", height = " << height << endl;

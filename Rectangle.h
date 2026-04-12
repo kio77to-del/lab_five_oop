@@ -15,6 +15,8 @@ public:
     ~Rectangle() override;
 
     void draw() const override;
+    void simpleAction() const;
+    void virtualAction() const override;
     void onlyRectangleMethod() const;
 };
 
