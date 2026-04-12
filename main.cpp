@@ -45,11 +45,38 @@ void demoBasePointers() {
     delete p3;
 }
 
+void demoCopyConstructors() {
+    cout << "\n=== Конструкторы копирования ===" << endl;
+
+    Circle c1(8.0);
+    cout << "Создаем копию Circle:" << endl;
+    Circle c2 = c1;
+
+    cout << "Исходный объект Circle:" << endl;
+    c1.draw();
+
+    cout << "Скопированный объект Circle:" << endl;
+    c2.draw();
+
+    cout << endl;
+
+    Rectangle r1(2.0, 9.0);
+    cout << "Создаем копию Rectangle:" << endl;
+    Rectangle r2(r1);
+
+    cout << "Исходный объект Rectangle:" << endl;
+    r1.draw();
+
+    cout << "Скопированный объект Rectangle:" << endl;
+    r2.draw();
+}
+
 int main() {
     cout << "Lab 5 started" << endl;
 
     demoSimpleObjects();
     demoBasePointers();
+    demoCopyConstructors();
 
     cout << "\nProgram finished" << endl;
     return 0;
