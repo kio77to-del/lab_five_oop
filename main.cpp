@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include "Shape.h"
 #include "Circle.h"
 #include "Rectangle.h"
@@ -236,6 +237,58 @@ void demoFunctionLifecycle() {
     s1.draw();
 }
 
+void demoUniquePtr() {
+    cout << "\n=== unique_ptr ===" << endl;
+
+    unique_ptr<Shape> ptr1 = make_unique<Circle>(25.0);
+
+    cout << "Объект внутри unique_ptr:" << endl;
+    ptr1->draw();
+
+    cout << "Передаем владение другому unique_ptr" << endl;
+    unique_ptr<Shape> ptr2 = move(ptr1);
+
+    if (ptr1 == nullptr) {
+        cout << "ptr1 теперь пустой после move()" << endl;
+    }
+
+    cout << "Теперь объектом владеет ptr2:" << endl;
+    ptr2->draw();
+
+    cout << "При выходе из функции объект удалится автоматически" << endl;
+}
+
+void demoSharedPtr() {
+    cout << "\n=== shared_ptr ===" << endl;
+
+    shared_ptr<Shape> ptr1 = make_shared<Rectangle>(11.0, 4.0);
+    cout << "После создания ptr1, use_count = " << ptr1.use_count() << endl;
+
+    {
+        shared_ptr<Shape> ptr2 = ptr1;
+        cout << "После копирования в ptr2, use_count = " << ptr1.use_count() << endl;
+
+        {
+            shared_ptr<Shape> ptr3 = ptr1;
+            cout << "После копирования в ptr3, use_count = " << ptr1.use_count() << endl;
+            ptr3->draw();
+        }
+
+        cout << "После уничтожения ptr3, use_count = " << ptr1.use_count() << endl;
+    }
+
+    cout << "После уничтожения ptr2, use_count = " << ptr1.use_count() << endl;
+    cout << "Когда последний shared_ptr исчезнет, объект удалится автоматически" << endl;
+}
+
+void demoSmartPointers() {
+    cout << "\n=== Умные указатели ===" << endl;
+
+    demoUniquePtr();
+    printSeparator();
+    demoSharedPtr();
+}
+
 int main() {
     cout << "Lab 5 started" << endl;
 
@@ -246,6 +299,7 @@ int main() {
     demoDynamicCast();
     demoManualTypeCheck();
     demoFunctionLifecycle();
+    demoSmartPointers();
 
     cout << "\nProgram finished" << endl;
     return 0;
