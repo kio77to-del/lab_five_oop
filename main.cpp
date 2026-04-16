@@ -4,6 +4,7 @@
 #include "Shape.h"
 #include "Circle.h"
 #include "Rectangle.h"
+#include "MethodicalDemos.h"
 
 using namespace std;
 
@@ -368,6 +369,14 @@ int main() {
     demoCastingComparison();
     demoFunctionLifecycle();
     demoSmartPointers();
+
+    cout << "\n==========================================" << endl;
+    cout << "Методические демонстрации Base / Desc" << endl;
+    cout << "==========================================" << endl;
+
+    demoPassingObjects();
+    demoReturningObjects();
+    demoSmartPointersMethodical();
 
     cout << "\nProgram finished" << endl;
     return 0;
