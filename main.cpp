@@ -145,31 +145,38 @@ void demoDynamicCast() {
 void demoManualTypeCheck() {
     cout << "\n=== Ручная проверка типа ===" << endl;
 
-    Shape* arr[3];
-    arr[0] = new Circle(3.0);
-    arr[1] = new Rectangle(6.0, 2.0);
-    arr[2] = new Shape();
+    Shape* objects[3];
+    objects[0] = new Circle(3);
+    objects[1] = new Rectangle(6, 2);
+    objects[2] = new Shape();
 
     for (int i = 0; i < 3; i++) {
-        cout << "Объект " << i + 1 << ": " << arr[i]->className() << endl;
+        cout << "\nОбъект " << i + 1 << ":" << endl;
+        cout << "className() = " << objects[i]->className() << endl;
 
-        if (arr[i]->className() == "Circle") {
-            Circle* c = static_cast<Circle*>(arr[i]);
+        cout << "Проверка через isA:" << endl;
+        cout << "isA(\"Shape\") = "
+             << (objects[i]->isA("Shape") ? "true" : "false") << endl;
+        cout << "isA(\"Circle\") = "
+             << (objects[i]->isA("Circle") ? "true" : "false") << endl;
+        cout << "isA(\"Rectangle\") = "
+             << (objects[i]->isA("Rectangle") ? "true" : "false") << endl;
+
+        if (objects[i]->isA("Circle")) {
             cout << "Ручная проверка: это Circle" << endl;
+            Circle* c = static_cast<Circle*>(objects[i]);
             c->onlyCircleMethod();
-        } else if (arr[i]->className() == "Rectangle") {
-            Rectangle* r = static_cast<Rectangle*>(arr[i]);
+        } else if (objects[i]->isA("Rectangle")) {
             cout << "Ручная проверка: это Rectangle" << endl;
+            Rectangle* r = static_cast<Rectangle*>(objects[i]);
             r->onlyRectangleMethod();
         } else {
             cout << "Ручная проверка: это базовый Shape" << endl;
         }
-
-        cout << endl;
     }
 
     for (int i = 0; i < 3; i++) {
-        delete arr[i];
+        delete objects[i];
     }
 }
 
