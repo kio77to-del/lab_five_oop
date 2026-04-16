@@ -111,11 +111,13 @@ void demoReturningObjects() {
     cout << "\n--- returnFunc5 ---" << endl;
     Base* b5 = returnFunc5();
     b5->show();
+    cout << "Удаляем объект, полученный через указатель из returnFunc5()" << endl;
     delete b5;
 
     cout << "\n--- returnFunc6 ---" << endl;
     Base& b6 = returnFunc6();
     b6.show();
+    cout << "Удаляем объект, полученный по ссылке из returnFunc6()" << endl;
     delete &b6;
 }
 
