@@ -5,19 +5,19 @@
 
 class Rectangle : public Shape {
 private:
-    double width;
-    double height;
+    int width;
+    int height;
 
 public:
     Rectangle();
-    Rectangle(double width, double height);
+    Rectangle(int w, int h);
     Rectangle(const Rectangle& other);
     ~Rectangle() override;
 
     void draw() const override;
-    void simpleAction() const;
     void virtualAction() const override;
     string className() const override;
+    bool isA(const string& className) const override;
     void onlyRectangleMethod() const;
 };
 

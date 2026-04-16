@@ -1,10 +1,13 @@
+#include <iostream>
 #include "Circle.h"
 
-Circle::Circle() : Shape("Circle"), radius(1.0) {
+using namespace std;
+
+Circle::Circle() : Shape("Circle"), radius(1) {
     cout << "Circle default constructor, radius = " << radius << endl;
 }
 
-Circle::Circle(double radius) : Shape("Circle"), radius(radius) {
+Circle::Circle(int r) : Shape("Circle"), radius(r) {
     cout << "Circle constructor with parameter, radius = " << radius << endl;
 }
 
@@ -20,16 +23,20 @@ void Circle::draw() const {
     cout << "Circle::draw(), radius = " << radius << endl;
 }
 
-void Circle::simpleAction() const {
-    cout << "Circle::simpleAction()" << endl;
-}
-
 void Circle::virtualAction() const {
     cout << "Circle::virtualAction()" << endl;
 }
 
 string Circle::className() const {
     return "Circle";
+}
+
+bool Circle::isA(const string& className) const {
+    return className == "Circle" || Shape::isA(className);
+}
+
+void Circle::simpleAction() const {
+    cout << "Circle::simpleAction()" << endl;
 }
 
 void Circle::onlyCircleMethod() const {

@@ -1,10 +1,13 @@
+#include <iostream>
 #include "Shape.h"
+
+using namespace std;
 
 Shape::Shape() : name("Shape") {
     cout << "Shape default constructor: " << name << endl;
 }
 
-Shape::Shape(const string& name) : name(name) {
+Shape::Shape(string n) : name(n) {
     cout << "Shape constructor with parameter: " << name << endl;
 }
 
@@ -30,13 +33,10 @@ void Shape::virtualAction() const {
 
 void Shape::testCalls() const {
     cout << "Shape::testCalls() start" << endl;
-
     cout << "Calling simpleAction(): ";
     simpleAction();
-
     cout << "Calling virtualAction(): ";
     virtualAction();
-
     cout << "Shape::testCalls() end" << endl;
 }
 
@@ -46,4 +46,8 @@ void Shape::draw() const {
 
 string Shape::className() const {
     return "Shape";
+}
+
+bool Shape::isA(const string& className) const {
+    return className == "Shape";
 }

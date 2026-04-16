@@ -1,12 +1,14 @@
+#include <iostream>
 #include "Rectangle.h"
 
-Rectangle::Rectangle() : Shape("Rectangle"), width(1.0), height(1.0) {
+using namespace std;
+
+Rectangle::Rectangle() : Shape("Rectangle"), width(1), height(1) {
     cout << "Rectangle default constructor, width = " << width
          << ", height = " << height << endl;
 }
 
-Rectangle::Rectangle(double width, double height)
-    : Shape("Rectangle"), width(width), height(height) {
+Rectangle::Rectangle(int w, int h) : Shape("Rectangle"), width(w), height(h) {
     cout << "Rectangle constructor with parameters, width = " << width
          << ", height = " << height << endl;
 }
@@ -27,16 +29,16 @@ void Rectangle::draw() const {
          << ", height = " << height << endl;
 }
 
-void Rectangle::simpleAction() const {
-    cout << "Rectangle::simpleAction()" << endl;
-}
-
 void Rectangle::virtualAction() const {
     cout << "Rectangle::virtualAction()" << endl;
 }
 
 string Rectangle::className() const {
     return "Rectangle";
+}
+
+bool Rectangle::isA(const string& className) const {
+    return className == "Rectangle" || Shape::isA(className);
 }
 
 void Rectangle::onlyRectangleMethod() const {

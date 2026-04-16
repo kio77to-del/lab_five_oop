@@ -5,18 +5,19 @@
 
 class Circle : public Shape {
 private:
-    double radius;
+    int radius;
 
 public:
     Circle();
-    Circle(double radius);
+    Circle(int r);
     Circle(const Circle& other);
     ~Circle() override;
 
     void draw() const override;
-    void simpleAction() const;
     void virtualAction() const override;
     string className() const override;
+    bool isA(const string& className) const override;
+    void simpleAction() const;
     void onlyCircleMethod() const;
 };
 

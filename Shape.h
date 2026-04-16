@@ -1,7 +1,6 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
-#include <iostream>
 #include <string>
 
 using namespace std;
@@ -12,18 +11,17 @@ protected:
 
 public:
     Shape();
-    Shape(const string& name);
+    Shape(string n);
     Shape(const Shape& other);
     virtual ~Shape();
 
     void info() const;
-
     void simpleAction() const;
     virtual void virtualAction() const;
     void testCalls() const;
-
     virtual void draw() const;
     virtual string className() const;
+    virtual bool isA(const string& className) const;
 };
 
 #endif
