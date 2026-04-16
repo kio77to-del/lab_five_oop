@@ -13,4 +13,6 @@ add_executable(lab_five_oop main.cpp
         Base.cpp
         Base.h
         Desc.cpp
-        Desc.h)
+        Desc.h
+        MethodicalDemos.cpp
+        MethodicalDemos.h)
