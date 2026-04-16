@@ -9,4 +9,8 @@ add_executable(lab_five_oop main.cpp
         Circle.cpp
         Circle.h
         Rectangle.cpp
-        Rectangle.h)
+        Rectangle.h
+        Base.cpp
+        Base.h
+        Desc.cpp
+        Desc.h)
